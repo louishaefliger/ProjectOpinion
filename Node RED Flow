@@ -1,0 +1,590 @@
+[
+    {
+        "id": "40d2475658967d3a",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "160b36be60a5bc57",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "host-t08b",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "56819de5821fed7a",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD.MM.YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "b559b418bfae3bd9",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "f4aaa442f7193bf2",
+        "type": "ui_group",
+        "name": "Auswertung",
+        "tab": "b559b418bfae3bd9",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "beacd4f6a2691d97",
+        "type": "ui_tab",
+        "name": "Adminkonsole",
+        "icon": "Umfrage",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "6a1a8a12b99f8e76",
+        "type": "ui_group",
+        "name": "Rückmeldung erfassen",
+        "tab": "beacd4f6a2691d97",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c1bc4c9225102c69",
+        "type": "mqtt in",
+        "z": "40d2475658967d3a",
+        "name": "Bewegung erkannt",
+        "topic": "motion_detection",
+        "qos": "2",
+        "datatype": "utf8",
+        "broker": "160b36be60a5bc57",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 160,
+        "wires": [
+            [
+                "bb6795a416ba7b7f",
+                "7f1895553529d144",
+                "26d91eb36d1d2168"
+            ]
+        ]
+    },
+    {
+        "id": "7f1895553529d144",
+        "type": "exec",
+        "z": "40d2475658967d3a",
+        "command": "python3 /home/pi/opinion_V4.py",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Run Programm opinion",
+        "x": 630,
+        "y": 440,
+        "wires": [
+            [
+                "9a671a8eebc98bd5",
+                "9e894717da80c398"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "9a671a8eebc98bd5",
+        "type": "debug",
+        "z": "40d2475658967d3a",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1040,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "0804b468d86cced7",
+        "type": "ui_button",
+        "z": "40d2475658967d3a",
+        "name": "Umfrage Manuel starten",
+        "group": "f4aaa442f7193bf2",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Umfrage auslösen",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 190,
+        "y": 500,
+        "wires": [
+            [
+                "7f1895553529d144"
+            ]
+        ]
+    },
+    {
+        "id": "bd93e2329639f029",
+        "type": "debug",
+        "z": "40d2475658967d3a",
+        "name": "debug 7",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "9e894717da80c398",
+        "type": "function",
+        "z": "40d2475658967d3a",
+        "name": "Answer Counter",
+        "func": "// Überprüfen Sie den empfangenen String und erhöhen Sie den Zähler für die entsprechende Antwortoption\nvar answer = msg.payload.trim(); // Entfernen Sie überflüssige Leerzeichen am Anfang und Ende des Strings\nvar data = context.get(\"answerData\") || {};\ndata[answer] = (data[answer] || 0) + 1;\ncontext.set(\"answerData\", data);\n\n// Erstellen Sie ein Array von Datenobjekten im richtigen Format für das Tortendiagramm\nvar chartData = Object.keys(data).map(function (option) {\n    return {\n        label: option,\n        value: data[option]\n    };\n});\n\n// Setzen Sie das Datenobjekt als Payload für den nächsten Node\nmsg.payload = chartData;\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1080,
+        "y": 360,
+        "wires": [
+            [
+                "b0aa2ce5dcd7e5bc",
+                "3cb645f16d22af76"
+            ]
+        ]
+    },
+    {
+        "id": "b0aa2ce5dcd7e5bc",
+        "type": "debug",
+        "z": "40d2475658967d3a",
+        "name": "debug 8",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1260,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "43db0ce3601f44c6",
+        "type": "ui_chart",
+        "z": "40d2475658967d3a",
+        "name": "Balkendiagramm",
+        "group": "f4aaa442f7193bf2",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Erkannte Bewegungen",
+        "chartType": "bar",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Warte auf Daten",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "30",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 670,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bb6795a416ba7b7f",
+        "type": "function",
+        "z": "40d2475658967d3a",
+        "name": "Count Motion Detect",
+        "func": "// Überprüfe, ob das empfangene Payload dem erwarteten String \"motion detected\" entspricht\nif (msg.payload === \"motion detected\") {\n    // Extrahiere den Stundenwert aus dem aktuellen Zeitstempel\n    var currentHour = new Date().getHours();\n\n    // Erzeuge ein Array von Stundenwerten für die x-Achse\n    var labels = [];\n    var data = Array(24).fill(0);\n\n    // Zähle die Anzahl der \"motion_detection\" Messages in den letzten 24 Stunden\n    var motionCount = context.get(\"motionCount\") || Array(24).fill(0);\n    motionCount[currentHour] += 1;\n    context.set(\"motionCount\", motionCount);\n\n    // Verschiebe die Daten im motionCount-Array entsprechend der aktuellen Stunde\n    var shiftedData = motionCount.slice(currentHour).concat(motionCount.slice(0, currentHour));\n\n    // Setze die Werte der Datenliste entsprechend der Anzahl der \"motion_detection\" Messages\n    for (var i = 0; i < 24; i++) {\n        var hour = ((currentHour - i + 24) % 24).toString().padStart(2, \"0\");\n        labels.unshift(hour);\n        data.unshift(shiftedData[i]);\n    }\n\n    // Erstelle ein Array im richtigen Format für das Balkendiagramm\n    var chartData = [{\n        labels: labels,\n        series: [\"motion_detection\"],\n        data: [data]\n    }];\n\n    // Setze die transformierten Daten als Payload für den nächsten Node\n    msg.payload = chartData;\n} else {\n    // Wenn das empfangene Payload nicht \"motion detected\" entspricht, verwende eine leere Datenliste\n    msg.payload = [];\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 160,
+        "wires": [
+            [
+                "bd93e2329639f029",
+                "43db0ce3601f44c6"
+            ]
+        ]
+    },
+    {
+        "id": "3cb645f16d22af76",
+        "type": "function",
+        "z": "40d2475658967d3a",
+        "name": "Prepare Chart Data",
+        "func": "var data = msg.payload;\n\nvar chartData = {\n    labels: [],\n    series: [],\n    data: [],\n};\n\nfor (var i = 0; i < data.length; i++) {\n    chartData.labels.push(data[i].label);\n    chartData.data.push(data[i].value);\n}\n\nmsg.payload = [chartData];\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1290,
+        "y": 420,
+        "wires": [
+            [
+                "ec0da1d2b4d5b223",
+                "124c248cd66035d9"
+            ]
+        ]
+    },
+    {
+        "id": "ec0da1d2b4d5b223",
+        "type": "ui_chart",
+        "z": "40d2475658967d3a",
+        "name": "Antworten",
+        "group": "f4aaa442f7193bf2",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "bar",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Warte auf Antworten",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#98a02c",
+            "#c046e2",
+            "#2ac0af",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": true,
+        "className": "",
+        "x": 1480,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "124c248cd66035d9",
+        "type": "debug",
+        "z": "40d2475658967d3a",
+        "name": "debug 9",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1500,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "cb4474957e35c85f",
+        "type": "ui_button",
+        "z": "40d2475658967d3a",
+        "name": "",
+        "group": "6a1a8a12b99f8e76",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Sehr gut",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "Sehr Gut",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 800,
+        "y": 540,
+        "wires": [
+            [
+                "9e894717da80c398"
+            ]
+        ]
+    },
+    {
+        "id": "978a61d07cf19975",
+        "type": "ui_button",
+        "z": "40d2475658967d3a",
+        "name": "",
+        "group": "6a1a8a12b99f8e76",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Gut",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "Gut",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 810,
+        "y": 580,
+        "wires": [
+            [
+                "9e894717da80c398"
+            ]
+        ]
+    },
+    {
+        "id": "29a01dd9de080801",
+        "type": "ui_button",
+        "z": "40d2475658967d3a",
+        "name": "",
+        "group": "6a1a8a12b99f8e76",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Schlecht",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "Schlecht",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 800,
+        "y": 620,
+        "wires": [
+            [
+                "9e894717da80c398"
+            ]
+        ]
+    },
+    {
+        "id": "ff22cfc4c9d03f40",
+        "type": "ui_button",
+        "z": "40d2475658967d3a",
+        "name": "",
+        "group": "6a1a8a12b99f8e76",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Sehr schlecht",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "Sehr schlecht",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 780,
+        "y": 660,
+        "wires": [
+            [
+                "9e894717da80c398"
+            ]
+        ]
+    },
+    {
+        "id": "26d91eb36d1d2168",
+        "type": "debug",
+        "z": "40d2475658967d3a",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 220,
+        "wires": []
+    }
+]
